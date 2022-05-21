@@ -1,86 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
 }
-
 body{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgb(49, 45, 45);
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#2196f3 , #e91e63);
 }
-
+.bubbles{
+  position: absolute;
+  bottom: -120px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  width: 100%;
+  justify-content: space-around;
+}
+.bubbles span{
+  height: 60px;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: move 10s linear infinite;
+  position: relative;
+  overflow: hidden;
+}
+@keyframes move {
+  100%{
+    transform: translateY(-100vh);
+  }
+}
+.bubbles span.one{
+  animation-delay: 2.2s;
+  transform: scale(2.15)
+}
+.bubbles span.two{
+  animation-delay: 3.5s;
+  transform: scale(1.55)
+}
+.bubbles span.three{
+  animation-delay: 0.2s;
+  transform: scale(0.35)
+}
+.bubbles span.four{
+  animation-delay: 6s;
+  transform: scale(2.15)
+}
+.bubbles span.five{
+  animation-delay: 7s;
+  transform: scale(0.5)
+}
+.bubbles span.six{
+  animation-delay: 4s;
+  transform: scale(2.5)
+}
+.bubbles span.seven{
+  animation-delay: 3;
+  transform: scale(1.5)
+}
+.bubbles span:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 60px;
+  width: 40%;
+  transform: skew(45deg) translateX(150px);
+  background: rgba(255, 255, 255, 0.15);
+  animation: mirror 3s linear infinite;
+}
+@keyframes mirror {
+  100%{
+    transform: translateX(-450px);
+  }
+}
+.bubbles span.one:before{
+  animation-delay: 1.5s;
+}
+.bubbles span.two:before{
+  animation-delay: 3.5s;
+}
+.bubbles span.three:before{
+  animation-delay: 2.5s;
+}
+.bubbles span.four:before{
+  animation-delay: 7.5s;
+}
+.bubbles span.five:before{
+  animation-delay: 4.5s;
+}
+.bubbles span.six:before{
+  animation-delay: 0.5s;
+}
+.bubbles span.seven:before{
+  animation-delay: 6s;
+}
 .container{
-    position: relative;
-    grid-column: span 4;
+  z-index: 12;
+  width: 360px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
-
-.container::before{
-    content: "";
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    left: -145px;
-    top: -85px;
-    background-color: #08AEEA;
-    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
-    z-index: -1;
+.container input[type="text"]{
+  width: 100%;
+  height: 100px;
+  margin: 0 3px;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  text-align: right;
+  padding-right: 10px;
+  pointer-events: none;
+  background: transparent;
 }
-
-.container::after{
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    right: -100px;
-    bottom: -80px;
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    z-index: -1;
+.container input[type="button"]{
+  height: 65px;
+  color: #fff;
+  width: calc(100% / 4 - 5px);
+  background: transparent;
+  border-radius: 12px;
+  margin-top: 15px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-
-.container .content{
-    background: rgba(255, 255, 255, 0.1);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    box-shadow: 3px 3px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(20px);
-}
-
-.container .content .result{
-    grid-column: span 4;
-    outline: none;
-    border: none;
-    height: 80px;
-    font-size: 20px;
-    padding-right: 15px;
-    text-align: right;
-    background: transparent;
-    color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.container .content .number{
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    transition: 0.2s;
-}
-
-.container .content .number:hover{
-background: #d8e42e ;
-color: black;
+.container input[type="button"]:hover{
+  background: rgba(255, 255, 255, 0.1);
 }
